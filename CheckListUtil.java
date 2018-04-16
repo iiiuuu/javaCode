@@ -47,13 +47,13 @@ public class CheckListUtil {
 	    	 	AMSDlist.clear();
 	    	 	JTlist.clear();
 	    	 	PNClist.clear();
-			   	Boolean Vcresult=true;
-				Boolean Poresult=true;
-				Boolean Avtresult=true;
-				Boolean Avvresult=true;
-				Boolean Amsdresult=true;
-				Boolean jtresult=true;
-				Boolean pncresult=true; 
+			Boolean Vcresult=true;
+			Boolean Poresult=true;
+			Boolean Avtresult=true;
+			Boolean Avvresult=true;
+			Boolean Amsdresult=true;
+			Boolean jtresult=true;
+			Boolean pncresult=true; 
 	    	 	if(l.getVisaCategory()!=null){
 					  VClist.addAll(l.getVisaCategory());
 				 }else{
