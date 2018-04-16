@@ -234,7 +234,7 @@ public class CheckListUtil {
 	  }
 		  return result;
 	  }
-   /**判断区间值
+   	/**判断区间值
  	*@prama s第一部分区间，s1：第二部分区间
  	*@return Boolean 是否含有交集
 	**/
@@ -365,10 +365,10 @@ public class CheckListUtil {
 			 }
 			 return c;
 	  }
-/**判断数字是否存在区间
+	/**判断数字是否存在区间
  	*prama c：区间，i：数字
  	*return 返回是否存在区间
- **/
+ 	**/
 	  public static boolean isElment(RangeC c,double i){
 		 Boolean leftE=c.isLeftE();
 		 Boolean rightE=c.isRightE();
