@@ -1,4 +1,5 @@
 ﻿
+﻿
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -7,10 +8,10 @@ import java.util.Map;
 import java.util.Set;
 
 public class CheckListUtil {
-	/*判断多条数据是否重叠包含区间重叠
- 	*prama list：已存在的数据，et：需要判断的数据
- 	*return Boolean 是否重叠
-	*/
+	/**判断多条数据是否重叠包含区间重叠
+ 	*@prama list：已存在的数据，et：需要判断的数据
+ 	*@return Boolean 是否重叠
+	**/
 	  public Boolean Ispass(List<SysCheckList> list,SysCheckList et){
 		  Boolean result=true;
 		  Set<String> VClist=new HashSet<String>();//签证类型
@@ -36,194 +37,193 @@ public class CheckListUtil {
 		  int pncStatus=0;
 		  //首先从数据库中的每个字段开始判断,只要输入的字段中，其中有一个字段不与数据库中的字段重复，则需要继续进行外层循环，否则跳出循环找到
 		  if(list.size()!=0){
-			  
 		 //判断每组数据
 	    	for(SysCheckList l:list){
 	    		//给予数据
-	    		 VClist.clear();
+	    		VClist.clear();
 	    	 	POlist.clear();
 	    	 	AVTlist.clear();
 	    	 	AVVlist.clear();
 	    	 	AMSDlist.clear();
 	    	 	JTlist.clear();
 	    	 	PNClist.clear();
-		   	 Boolean Vcresult=true;
-			 Boolean Poresult=true;
-			 Boolean Avtresult=true;
-			 Boolean Avvresult=true;
-			 Boolean Amsdresult=true;
-			 Boolean jtresult=true;
-			 Boolean pncresult=true; 
+			   	Boolean Vcresult=true;
+				Boolean Poresult=true;
+				Boolean Avtresult=true;
+				Boolean Avvresult=true;
+				Boolean Amsdresult=true;
+				Boolean jtresult=true;
+				Boolean pncresult=true; 
 	    	 	if(l.getVisaCategory()!=null){
-				  VClist.addAll(l.getVisaCategory());
-			  }else{
-				  vcStatus=1;
-			  }
-			  if(l.getProcessOption()!=null){
-				  POlist.addAll(l.getProcessOption());
-			  }else{
-				  poStatus=1;
-			  }
-			  if(l.getApplyVisaTimes()!=null){
-				  AVTlist.addAll(l.getApplyVisaTimes());
-			  }else{
-				  avtStatus=1;
-			  }
-			  if(l.getApplyVisaValidity()!=null){
-				  AVVlist.addAll(l.getApplyVisaValidity());
-			  }else{
-				  avvStatus=1;
-			  }
-			  if(l.getApplyMaxStayDays()!=null){
-				  AMSDlist.addAll(l.getApplyMaxStayDays());
-			  }else{
-				  amsdStatus=1;
-			  }
-			  if(l.getJobType()!=null){
-				  JTlist.addAll(l.getJobType());
-			  }else{
-				  jtStatus=1;
-			  } 
-			  if(l.getPersoninfoNationalityCountry()!=null){
-				  PNClist.addAll(l.getPersoninfoNationalityCountry());
-			  }else{
-				  pncStatus=1;
-			  } 
-		  if(vcStatus==1){
-				  Vcresult=false;
-		  }else{
-			  if(VClistN==null){
-				  Vcresult=false;
-			  }else{
-				  for(String vcN:VClistN){
-					  for(String vc:VClist){
-						  if(vcN.equals(vc)){
-							  Vcresult=false;
-							  break;
+					  VClist.addAll(l.getVisaCategory());
+				 }else{
+					  vcStatus=1;
+				 }
+				  if(l.getProcessOption()!=null){
+					  POlist.addAll(l.getProcessOption());
+				  }else{
+					  poStatus=1;
+				  }
+				  if(l.getApplyVisaTimes()!=null){
+					  AVTlist.addAll(l.getApplyVisaTimes());
+				  }else{
+					  avtStatus=1;
+				  }
+				  if(l.getApplyVisaValidity()!=null){
+					  AVVlist.addAll(l.getApplyVisaValidity());
+				  }else{
+					  avvStatus=1;
+				  }
+				  if(l.getApplyMaxStayDays()!=null){
+					  AMSDlist.addAll(l.getApplyMaxStayDays());
+				  }else{
+					  amsdStatus=1;
+				  }
+				  if(l.getJobType()!=null){
+					  JTlist.addAll(l.getJobType());
+				  }else{
+					  jtStatus=1;
+				  } 
+				  if(l.getPersoninfoNationalityCountry()!=null){
+					  PNClist.addAll(l.getPersoninfoNationalityCountry());
+				  }else{
+					  pncStatus=1;
+				  } 
+				  if(vcStatus==1){
+						  Vcresult=false;
+				  }else{
+					  if(VClistN==null){
+						  Vcresult=false;
+					  }else{
+						  for(String vcN:VClistN){
+							  for(String vc:VClist){
+								  if(vcN.equals(vc)){
+									  Vcresult=false;
+									  break;
+								  }
+							  }
+							  if(!Vcresult){
+								  break;
+							  }
 						  }
 					  }
-					  if(!Vcresult){
-						  break;
-					  }
 				  }
-			  }
-		  }
-		  if(poStatus==1){
-				  Poresult=false;
-		  }else{
-			  if(POlistN==null){
-				  Poresult=false;
-			  }else{
-				  for(String poN:POlistN){
-					  for(String po:POlist){
-						  if(poN.equals(po)){
-							  Poresult=false;
-							  break;
+				  if(poStatus==1){
+						  Poresult=false;
+				  }else{
+					  if(POlistN==null){
+						  Poresult=false;
+					  }else{
+						  for(String poN:POlistN){
+							  for(String po:POlist){
+								  if(poN.equals(po)){
+									  Poresult=false;
+									  break;
+								  }
+							  }
+							  if(!Poresult){
+								  break;
+							  }
 						  }
 					  }
-					  if(!Poresult){
-						  break;
-					  }
 				  }
-			  }
-		  }
-		  if(avtStatus==1){
-				  Avtresult=false;
-		  }else{
-			  if(AVTlistN==null){
-				  Avtresult=false;
-			  }else{
-				  for(String vcN:AVTlistN){
-					  for(String vc:AVTlist){
-						  if(vcN.equals(vc)){
-							  Avtresult=false;
-							  break;
+				  if(avtStatus==1){
+						  Avtresult=false;
+				  }else{
+					  if(AVTlistN==null){
+						  Avtresult=false;
+					  }else{
+						  for(String vcN:AVTlistN){
+							  for(String vc:AVTlist){
+								  if(vcN.equals(vc)){
+									  Avtresult=false;
+									  break;
+								  }
+							  }
+							  if(!Avtresult){
+								  break;
+							  }
 						  }
 					  }
-					  if(!Avtresult){
-						  break;
-					  }
 				  }
-			  }
-		  }
-		  //有效期
-		  if(avvStatus==1){
-				  Avvresult=false;
-		  }else{
-			  if(AVVlistN==null){
-				  Avvresult=false;
-			  }else{
-				  for(String vcN:AVVlistN){
-					  for(String vc:AVVlist){
-						  if(!changeYS(vcN,vc)){
-							  Avvresult=false;
-							  break;
+				  //有效期
+				  if(avvStatus==1){
+						  Avvresult=false;
+				  }else{
+					  if(AVVlistN==null){
+						  Avvresult=false;
+					  }else{
+						  for(String vcN:AVVlistN){
+							  for(String vc:AVVlist){
+								  if(!changeYS(vcN,vc)){
+									  Avvresult=false;
+									  break;
+								  }
+							  }
+							  if(!Avvresult){
+								  break;
+							  }
 						  }
 					  }
-					  if(!Avvresult){
-						  break;
-					  }
 				  }
-			  }
-		  }
-		  //停留期
-		  if(amsdStatus==1){
-				  Amsdresult=false;
-		  }else{
-			  if(AMSDlistN==null){
-				  Amsdresult=false;
-			  }else{
-				  for(String vcN:AMSDlistN){
-					  for(String vc:AMSDlist){
-						  if(!changeYS(vcN,vc)){
-							  Amsdresult=false;
-							  break;
+				  //停留期
+				  if(amsdStatus==1){
+						  Amsdresult=false;
+				  }else{
+					  if(AMSDlistN==null){
+						  Amsdresult=false;
+					  }else{
+						  for(String vcN:AMSDlistN){
+							  for(String vc:AMSDlist){
+								  if(!changeYS(vcN,vc)){
+									  Amsdresult=false;
+									  break;
+								  }
+							  }
+							  if(!Amsdresult){
+								  break;
+							  }
 						  }
 					  }
-					  if(!Amsdresult){
-						  break;
-					  }
 				  }
-			  }
-		  }
-		  if(jtStatus==1){
-				  jtresult=false;
-		  }else{
-			  if(JTlistN==null){
-				  jtresult=false;
-			  }else{
-				  for(String vcN:JTlistN){
-					  for(String vc:JTlist){
-						  if(vcN.equals(vc)){
-							  jtresult=false;
-							  break;
+				  if(jtStatus==1){
+						  jtresult=false;
+				  }else{
+					  if(JTlistN==null){
+						  jtresult=false;
+					  }else{
+						  for(String vcN:JTlistN){
+							  for(String vc:JTlist){
+								  if(vcN.equals(vc)){
+									  jtresult=false;
+									  break;
+								  }
+							  }
+							  if(!jtresult){
+								  break;
+							  }
 						  }
 					  }
-					  if(!jtresult){
-						  break;
-					  }
 				  }
-			  }
-		  }
-		  if(pncStatus==1){
-				  pncresult=false;
-		  }else{
-			  if(PNClistN==null){
-				  pncresult=false;
-			  }else{
-				  for(String vcN:PNClistN){
-					  for(String vc:PNClist){
-						  if(vcN.equals(vc)){
-							  pncresult=false;
-							  break;
+				  if(pncStatus==1){
+						  pncresult=false;
+				  }else{
+					  if(PNClistN==null){
+						  pncresult=false;
+					  }else{
+						  for(String vcN:PNClistN){
+							  for(String vc:PNClist){
+								  if(vcN.equals(vc)){
+									  pncresult=false;
+									  break;
+								  }
+							  }
+							  if(!pncresult){
+								  break;
+							  }
 						  }
 					  }
-					  if(!pncresult){
-						  break;
-					  }
 				  }
-			  }
-		  }
 		  if(Vcresult==false&&Poresult==false&&Avtresult==false&&Avvresult==false&&Amsdresult==false&&jtresult==false&&pncresult==false){
 			  result=false;
 			  break;
@@ -234,10 +234,10 @@ public class CheckListUtil {
 	  }
 		  return result;
 	  }
-	/*判断区间值
- 	*prama s第一部分区间，s1：第二部分区间
- 	*return Boolean 是否含有交集
-	*/
+   /**判断区间值
+ 	*@prama s第一部分区间，s1：第二部分区间
+ 	*@return Boolean 是否含有交集
+	**/
 	  public static boolean changeYS(String s,String s1){
 		  boolean result=true;
 		  String[] q= s.split("\\|");
@@ -365,10 +365,10 @@ public class CheckListUtil {
 			 }
 			 return c;
 	  }
-	/*判断数字是否存在区间
- 	/*prama c：区间，i：数字
- 	/*return 返回是否存在区间
-	/*
+/**判断数字是否存在区间
+ 	*prama c：区间，i：数字
+ 	*return 返回是否存在区间
+ **/
 	  public static boolean isElment(RangeC c,double i){
 		 Boolean leftE=c.isLeftE();
 		 Boolean rightE=c.isRightE();
